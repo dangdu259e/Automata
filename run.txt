@@ -1,0 +1,5 @@
+1.  gcc is used to compile C program.
+compile file .c: gcc fileName.c -o filename
+(vd gcc helloworld.c -o helloworld
+.\helloworld)
+

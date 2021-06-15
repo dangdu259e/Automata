@@ -1,0 +1,4 @@
+<tên biến1> = <số tự nhiên>       ==> đọc
+<tên biến2> = <số tự nhiên>       ==> đọc
+<tên biến3> = <số tự nhiên>       ==> đọc
+<tên biến> <phép toán> <tên biến> ==> Tính và in ra kết quả biểu thức

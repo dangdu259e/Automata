@@ -1,0 +1,18 @@
+// bộ sinh trình dịch input là file
+%win_flex snazzle.l
+% g++ lex.yy.c -lfl -o snazzle
+% cat a.snazzle.file
+90
+23.4
+4 5 6
+this is text!
+% ./snazzle
+Found an integer:90
+Found a floating-point number:23.4
+Found an integer:4
+Found an integer:5
+Found an integer:6
+Found a string: this
+Found a string: is
+Found a string: text
+%

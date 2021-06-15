@@ -1,0 +1,16 @@
+// sử dụng bison để tạo ra bộ phân tích cú pháp
+// flex gọi bison để tiếp tục phân tích token
+// tóm lại là (bison) phân tích câu thành các token và (flex) xử lý các tokens đó
+% win_bison -d snazzle.y
+% win_flex snazzle.l
+% g++ snazzle.tab.c lex.yy.c -lfl -o snazzle
+% ./snazzle
+bison found a string: text
+bison found a string: is
+bison found a string: this
+bison found an int: 6
+bison found an int: 5
+bison found an int: 4
+bison found a float: 23.4
+bison found an int: 90
+%

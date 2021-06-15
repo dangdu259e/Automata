@@ -1,0 +1,19 @@
+// bộ sinh trình dịch cơ bản
+snazzle.l
+    % flex snazzle.l      ==> chạy ra file lex.yy.c
+    % g++ lex.yy.c -o snazzle
+    % ./snazzle
+    90
+    Found an integer:90
+    23.4
+    Found a floating-point number:23.4
+    4 5 6
+    Found an integer:4
+    Found an integer:5
+    Found an integer:6
+    this is text!
+    Found a string: this
+    Found a string: is
+    Found a string: text
+    !
+2) 
