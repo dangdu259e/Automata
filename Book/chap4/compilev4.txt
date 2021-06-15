@@ -1,0 +1,12 @@
+% win_bison -d snazzle.y
+% g++ snazzle.tab.c lex.yy.c -o snazzle
+% ./snazzle
+bison found an int: 90
+bison found a float: 23.4
+bison found an int: 4
+bison found an int: 5
+bison found an int: 6
+bison found a string: this
+bison found a string: is
+bison found a string: text
+%
