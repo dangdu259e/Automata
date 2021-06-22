@@ -3,7 +3,7 @@
   using namespace std;
   extern int yylex();
 %}
-// option này giúp chúng ta không quét yywrap
+
 %option noyywrap 
 %%
 [ \t\n]         ;
