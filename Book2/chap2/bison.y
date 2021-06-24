@@ -8,6 +8,10 @@ int yylex(); // the lexical analyzer function ==> nhận mã thông báo từ lu
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
+
+// 26 symbol a-z
+// 26 symbol A-Z
+// ==> sum symbol [a-zA-Z] = 26*2 = 52
 int symbols[52]; // symbol input (type = array C)
 int symbolVal(char symbol);  // symbol value 
 void updateSymbolVal(char symbol, int val); // update value of symbol
@@ -58,6 +62,7 @@ exp    	: term                  {$$ = $1;}
 		| exp '*' term			{$$ = $1 * $3;}
 		| exp '/' term			{$$ = $1 / $3;}
        	;
+
 term   	: number                {$$ = $1;}
 		| identifier			{$$ = symbolVal($1);} 
         ;
@@ -87,11 +92,19 @@ int symbolVal(char symbol)
 /* updates the value of a given symbol */
 void updateSymbolVal(char symbol, int val)
 {
+	// VD a = 10
+	// bucket = vị trí mà đặt từ đó, token = a ==> idx = bucket = a - 'a' + 26
 	int bucket = computeSymbolIndex(symbol);
+	// val = value của từ đó 
+	// val = 10
 	symbols[bucket] = val;
 }
 
 int main (void) {
+	// scan fileName
+	// char fileName[];
+	// scanf ("%s", fileName);
+
 	// open a file handle to a particular file:
 	char fileName[] = "test.txt";
 	FILE *myfile = fopen(fileName, "r");
@@ -103,6 +116,7 @@ int main (void) {
 	// Set flex to read from it instead of defaulting to STDIN:
 	yyin = myfile;
 
+	// create symbols
 	int i;
 	for(i=0; i<52; i++) {
 		symbols[i] = 0;

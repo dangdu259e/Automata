@@ -1,0 +1,4 @@
+% win_bison -d bison.y
+% win_flex flex.l
+% gcc bison.tab.c lex.yy.c -o bison
+% ./bison

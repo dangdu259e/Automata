@@ -1,95 +1,129 @@
+//	C declarations: Các khai báo trong C
 %{
-  #include <cstdio>
-  #include <iostream>
-  using namespace std;
+void yyerror (char *s); // The Error Reporting Function
+int yylex(); // the lexical analyzer function ==> nhận mã thông báo từ luồng đầu vào và trả chúng về phân tích cú pháp
+// Bison không tự trả về nên cần viết thêm yyparse để có thể gọi yylex() ==> gọi là máy quét từ 
 
-  // stuff from flex that bison needs to know about:
-  extern int yylex();
-  extern int yyparse();
-  extern FILE *yyin;
- 
-  void yyerror(const char *s);
+// library C use in code 
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
+
+// 26 symbol a-z
+// 26 symbol A-Z
+// ==> sum symbol [a-zA-Z] = 26*2 = 52
+int symbols[52]; // symbol input (type = array C)
+int symbolVal(char symbol);  // symbol value 
+void updateSymbolVal(char symbol, int val); // update value of symbol
+extern FILE *yyin;	// repair input to file 
+
 %}
 
-%union {
-  int ival;
-  float fval;
-  char *sval;
-}
+//	Bison definitions: Các khai báo cho bảng trong bison 
+//	maybe: %token, %union, %type, %left, %right, %nonassoc, .
+//	%union: khai báo đối tượng như class
+%union {int num; char id;}
 
-// define the constant-string tokens:
-%token SNAZZLE TYPE
-%token END
+//	%start: The Start-Symbol
+%start line
+//	%token: Declare token
+%token print
+%token exit_command
+// 	%token: khai kiểu từng loại token
+%token <num> number
+%token <id> identifier
+// %type: Nonterminal Symbols: ký hiệu danh nghĩa
+// Khai báo kiểu giá trị mỗi ký hiệu danh nghĩa mà union dùng
+%type <num> line exp term 
+%type <id> assignment
 
-// define the "terminal symbol" token types I'm going to use (in CAPS
-// by convention), and associate each with a field of the union:
-%token <ival> INT
-%token <fval> FLOAT
-%token <sval> STRING
+
+//	Grammar Rules
+%%
+
+/* descriptions of expected inputs     corresponding actions (in C) */
+
+line    : assignment '\n'			{;} 							// Không làm bất cứ điều gì khi nhận được dấu ;
+		| exit_command '\n'			{exit(EXIT_SUCCESS);} 			// Exit khỏi ctrình
+		| print exp '\n'			{printf("Printing %d\n", $2);} 	// in biểu thức
+		| line assignment '\n'		{;} 							// dòng
+		| line print exp '\n'		{printf("Printing %d\n", $3);} 	// in ra dòng biểu thức
+		| line exit_command '\n'	{exit(EXIT_SUCCESS);} 			// dòng kết thúc
+        ;
+
+// read variable assignment line
+assignment 	: identifier '=' exp  { updateSymbolVal($1,$3); }
+			;
+
+// read expression line 
+exp    	: term                  {$$ = $1;}
+       	| exp '+' term          {$$ = $1 + $3;}
+       	| exp '-' term          {$$ = $1 - $3;}
+		| exp '*' term			{$$ = $1 * $3;}
+		| exp '/' term			{$$ = $1 / $3;}
+       	;
+
+term   	: number                {$$ = $1;}
+		| identifier			{$$ = symbolVal($1);} 
+        ;
 
 %%
 
-// the first rule defined is the highest-level rule, which in our
-// case is just the concept of a whole "snazzle file":
-snazzle:
-  header template body_section footer {
-      cout << "done with a snazzle file!" << endl;
-    }
-  ;
-header:
-  SNAZZLE FLOAT {
-      cout << "reading a snazzle file version " << $2 << endl;
-    }
-  ;
-template:
-  typelines
-  ;
-typelines:
-  typelines typeline
-  | typeline
-  ;
-typeline:
-  TYPE STRING {
-      cout << "new defined snazzle type: " << $2 << endl;
-      free($2);
-    }
-  ;
-body_section:
-  body_lines
-  ;
-body_lines:
-  body_lines body_line
-  | body_line
-  ;
-body_line:
-  INT INT INT INT STRING {
-      cout << "new snazzle: " << $1 << $2 << $3 << $4 << $5 << endl;
-      free($5);
-    }
-  ;
-footer:
-  END
-  ;
 
-%%
+//	Additional C Code
+int computeSymbolIndex(char token)
+{
+	int idx = -1;
+	if(islower(token)) {
+		idx = token - 'a' + 26;
+	} else if(isupper(token)) {
+		idx = token - 'A';
+	}
+	return idx;
+} 
 
-int main(int, char**) {
-  // open a file handle to a particular file:
-  FILE *myfile = fopen("input.txt", "r");
-  // make sure it's valid:
-  if (!myfile) {
-    cout << "I can't open input.txt!" << endl;
-    return -1;
-  }
-  // Set flex to read from it instead of defaulting to STDIN:
-  yyin = myfile;
-
-  // Parse through the input:
-  yyparse();
+/* returns the value of a given symbol */
+int symbolVal(char symbol)
+{
+	int bucket = computeSymbolIndex(symbol);
+	return symbols[bucket];
 }
 
-void yyerror(const char *s) {
-  cout << "EEK, parse error!  Message: " << s << endl;
-  // might as well halt now:
-  exit(-1);
+/* updates the value of a given symbol */
+void updateSymbolVal(char symbol, int val)
+{
+	// VD a = 10
+	// bucket = vị trí mà đặt từ đó, token = a ==> idx = bucket = a - 'a' + 26
+	int bucket = computeSymbolIndex(symbol);
+	// val = value của từ đó 
+	// val = 10
+	symbols[bucket] = val;
 }
+
+int main (void) {
+	// scan fileName
+	// char fileName[];
+	// scanf ("%s", fileName);
+
+	// open a file handle to a particular file:
+	char fileName[] = "input.txt";
+	FILE *myfile = fopen(fileName, "r");
+	// make sure it's valid:
+	if (!myfile) {
+		printf("I can't open file %d \n", fileName);
+		return -1;
+	}
+	// Set flex to read from it instead of defaulting to STDIN:
+	yyin = myfile;
+
+	// create symbols
+	int i;
+	for(i=0; i<52; i++) {
+		symbols[i] = 0;
+	}
+
+	return yyparse ( );
+}
+
+// catch error
+void yyerror (char *s) {fprintf (stderr, "%s\n", s);} 

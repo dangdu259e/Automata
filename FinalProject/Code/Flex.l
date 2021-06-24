@@ -1,19 +1,20 @@
-// Khai báo thư viện
+/*** C library use and declare variable ***/
 %{
-  #include "Bison.tab.h"
+#include "bison.tab.h"
+void yyerror (char *s);
+int yylex();
 %}
-%option noyywrap
-// Quy tắc dịch
+
+/*** the actual token (flex) or grammar (bison definition) ***/
 %%
-[ \t\n] ;
-sNaZZle        { return SNAZZLE; }
-type           { return TYPE; }
-end            { return END; }
-[0-9]+\.[0-9]+ { yylval.fval = atof(yytext); return FLOAT; }
-[0-9]+         { yylval.ival = atoi(yytext); return INT; }
-[a-zA-Z0-9]+   {
-  yylval.sval = strdup(yytext);
-  return STRING;
-}
-.              ;
+"print"           {return print;}
+"exit"            {return exit_command;}
+[a-zA-Z]          {yylval.id = yytext[0]; return identifier;}
+[0-9]+            {yylval.num = atoi(yytext); return number;}
+[ \t]             ;
+[-+*/=\n]         {return yytext[0];}
+.                 {ECHO; yyerror ("unexpected character");}
 %%
+
+/*** Xử lý kết thúc tệp ***/ 
+int yywrap (void) {return 1;}

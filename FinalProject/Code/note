@@ -1,0 +1,3 @@
+atoi ==> control character in input
+example:    atoi("Xinchao") => result = 0
+            atoi("09123") => result = 09123

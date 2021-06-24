@@ -362,7 +362,7 @@ struct yy_trans_info
 	};
 static const flex_int16_t yy_accept[21] =
     {   0,
-        0,    0,    9,    7,    5,    5,    6,    4,    3,    3,
+        0,    0,    9,    7,    5,    6,    6,    4,    3,    3,
         3,    4,    0,    0,    0,    0,    2,    0,    1,    0
     } ;
 
@@ -373,7 +373,7 @@ static const YY_CHAR yy_ec[256] =
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    2,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    4,    4,    1,    4,    1,    4,    5,    5,    5,
-        5,    5,    5,    5,    5,    5,    5,    1,    4,    1,
+        5,    5,    5,    5,    5,    5,    5,    1,    1,    1,
         4,    1,    1,    1,    6,    6,    6,    6,    6,    6,
         6,    6,    6,    6,    6,    6,    6,    6,    6,    6,
         6,    6,    6,    6,    6,    6,    6,    6,    6,    6,
@@ -446,9 +446,9 @@ int yy_flex_debug = 0;
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
-#line 1 ".\\flex.l"
+#line 1 ".\\Flex.l"
 /*** C library use and declare variable ***/
-#line 3 ".\\flex.l"
+#line 3 ".\\Flex.l"
 #include "bison.tab.h"
 void yyerror (char *s);
 int yylex();
@@ -671,7 +671,7 @@ YY_DECL
 		}
 
 	{
-#line 8 ".\\flex.l"
+#line 8 ".\\Flex.l"
 
 #line 676 "lex.yy.c"
 
@@ -732,43 +732,43 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 9 ".\\flex.l"
+#line 9 ".\\Flex.l"
 {return print;}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 10 ".\\flex.l"
+#line 10 ".\\Flex.l"
 {return exit_command;}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 11 ".\\flex.l"
-{yylval.id = yytext[0]; return identifier;}
+#line 11 ".\\Flex.l"
+{yylval.id = yytext[0];printf("%c - ",yytext[0]) ; return identifier;}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 12 ".\\flex.l"
-{yylval.num = atoi(yytext); return number;}
+#line 12 ".\\Flex.l"
+{yylval.num = atoi(yytext);printf("%d\n",yylval.num); return number;}
 	YY_BREAK
 case 5:
-/* rule 5 can match eol */
 YY_RULE_SETUP
-#line 13 ".\\flex.l"
+#line 13 ".\\Flex.l"
 ;
 	YY_BREAK
 case 6:
+/* rule 6 can match eol */
 YY_RULE_SETUP
-#line 14 ".\\flex.l"
+#line 14 ".\\Flex.l"
 {return yytext[0];}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 15 ".\\flex.l"
+#line 15 ".\\Flex.l"
 {ECHO; yyerror ("unexpected character");}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 17 ".\\flex.l"
+#line 17 ".\\Flex.l"
 ECHO;
 	YY_BREAK
 #line 774 "lex.yy.c"
@@ -1776,7 +1776,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 17 ".\\flex.l"
+#line 17 ".\\Flex.l"
 
 /*** Xử lý kết thúc tệp ***/ 
 int yywrap (void) {return 1;}

@@ -63,7 +63,7 @@
 
 /* Copy the first part of user declarations.  */
 /* Line 371 of yacc.c  */
-#line 2 ".\\bison.y"
+#line 2 "Bison.y"
 
 void yyerror (char *s); // The Error Reporting Function
 int yylex(); // the lexical analyzer function ==> nhận mã thông báo từ luồng đầu vào và trả chúng về phân tích cú pháp
@@ -73,6 +73,10 @@ int yylex(); // the lexical analyzer function ==> nhận mã thông báo từ lu
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
+
+// 26 symbol a-z
+// 26 symbol A-Z
+// ==> sum symbol [a-zA-Z] = 26*2 = 52
 int symbols[52]; // symbol input (type = array C)
 int symbolVal(char symbol);  // symbol value 
 void updateSymbolVal(char symbol, int val); // update value of symbol
@@ -80,7 +84,7 @@ extern FILE *yyin;	// repair input to file
 
 
 /* Line 371 of yacc.c  */
-#line 84 "bison.tab.c"
+#line 88 "Bison.tab.c"
 
 # ifndef YY_NULL
 #  if defined __cplusplus && 201103L <= __cplusplus
@@ -99,7 +103,7 @@ extern FILE *yyin;	// repair input to file
 #endif
 
 /* In a future release of Bison, this section will be replaced
-   by #include "bison.tab.h".  */
+   by #include "Bison.tab.h".  */
 #ifndef YY_YY_BISON_TAB_H_INCLUDED
 # define YY_YY_BISON_TAB_H_INCLUDED
 /* Enabling traces.  */
@@ -128,11 +132,11 @@ extern int yydebug;
 typedef union YYSTYPE
 {
 /* Line 387 of yacc.c  */
-#line 21 ".\\bison.y"
+#line 25 "Bison.y"
 int num; char id;
 
 /* Line 387 of yacc.c  */
-#line 136 "bison.tab.c"
+#line 140 "Bison.tab.c"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
@@ -160,7 +164,7 @@ int yyparse ();
 /* Copy the second part of user declarations.  */
 
 /* Line 390 of yacc.c  */
-#line 164 "bison.tab.c"
+#line 168 "Bison.tab.c"
 
 #ifdef short
 # undef short
@@ -402,11 +406,11 @@ union yyalloc
 static const yytype_uint8 yytranslate[] =
 {
        0,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       7,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,    11,     9,     2,    10,     2,    12,     2,     2,
-       2,     2,     2,     2,     2,     2,     2,     2,     2,     7,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     8,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
@@ -453,8 +457,8 @@ static const yytype_int8 yyrhs[] =
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    42,    42,    43,    44,    45,    46,    47,    51,    55,
-      56,    57,    58,    59,    62,    63
+       0,    46,    46,    47,    48,    49,    50,    51,    55,    59,
+      60,    61,    62,    63,    66,    67
 };
 #endif
 
@@ -464,7 +468,7 @@ static const yytype_uint8 yyrline[] =
 static const char *const yytname[] =
 {
   "$end", "error", "$undefined", "print", "exit_command", "number",
-  "identifier", "';'", "'='", "'+'", "'-'", "'*'", "'/'", "$accept",
+  "identifier", "'\\n'", "'='", "'+'", "'-'", "'*'", "'/'", "$accept",
   "line", "assignment", "exp", "term", YY_NULL
 };
 #endif
@@ -474,7 +478,7 @@ static const char *const yytname[] =
    token YYLEX-NUM.  */
 static const yytype_uint16 yytoknum[] =
 {
-       0,   256,   257,   258,   259,   260,   261,    59,    61,    43,
+       0,   256,   257,   258,   259,   260,   261,    10,    61,    43,
       45,    42,    47
 };
 # endif
@@ -1362,91 +1366,91 @@ yyreduce:
     {
         case 2:
 /* Line 1792 of yacc.c  */
-#line 42 ".\\bison.y"
+#line 46 "Bison.y"
     {;}
     break;
 
   case 3:
 /* Line 1792 of yacc.c  */
-#line 43 ".\\bison.y"
+#line 47 "Bison.y"
     {exit(EXIT_SUCCESS);}
     break;
 
   case 4:
 /* Line 1792 of yacc.c  */
-#line 44 ".\\bison.y"
+#line 48 "Bison.y"
     {printf("Printing %d\n", (yyvsp[(2) - (3)].num));}
     break;
 
   case 5:
 /* Line 1792 of yacc.c  */
-#line 45 ".\\bison.y"
+#line 49 "Bison.y"
     {;}
     break;
 
   case 6:
 /* Line 1792 of yacc.c  */
-#line 46 ".\\bison.y"
+#line 50 "Bison.y"
     {printf("Printing %d\n", (yyvsp[(3) - (4)].num));}
     break;
 
   case 7:
 /* Line 1792 of yacc.c  */
-#line 47 ".\\bison.y"
+#line 51 "Bison.y"
     {exit(EXIT_SUCCESS);}
     break;
 
   case 8:
 /* Line 1792 of yacc.c  */
-#line 51 ".\\bison.y"
+#line 55 "Bison.y"
     { updateSymbolVal((yyvsp[(1) - (3)].id),(yyvsp[(3) - (3)].num)); }
     break;
 
   case 9:
 /* Line 1792 of yacc.c  */
-#line 55 ".\\bison.y"
+#line 59 "Bison.y"
     {(yyval.num) = (yyvsp[(1) - (1)].num);}
     break;
 
   case 10:
 /* Line 1792 of yacc.c  */
-#line 56 ".\\bison.y"
+#line 60 "Bison.y"
     {(yyval.num) = (yyvsp[(1) - (3)].num) + (yyvsp[(3) - (3)].num);}
     break;
 
   case 11:
 /* Line 1792 of yacc.c  */
-#line 57 ".\\bison.y"
+#line 61 "Bison.y"
     {(yyval.num) = (yyvsp[(1) - (3)].num) - (yyvsp[(3) - (3)].num);}
     break;
 
   case 12:
 /* Line 1792 of yacc.c  */
-#line 58 ".\\bison.y"
+#line 62 "Bison.y"
     {(yyval.num) = (yyvsp[(1) - (3)].num) * (yyvsp[(3) - (3)].num);}
     break;
 
   case 13:
 /* Line 1792 of yacc.c  */
-#line 59 ".\\bison.y"
+#line 63 "Bison.y"
     {(yyval.num) = (yyvsp[(1) - (3)].num) / (yyvsp[(3) - (3)].num);}
     break;
 
   case 14:
 /* Line 1792 of yacc.c  */
-#line 62 ".\\bison.y"
+#line 66 "Bison.y"
     {(yyval.num) = (yyvsp[(1) - (1)].num);}
     break;
 
   case 15:
 /* Line 1792 of yacc.c  */
-#line 63 ".\\bison.y"
+#line 67 "Bison.y"
     {(yyval.num) = symbolVal((yyvsp[(1) - (1)].id));}
     break;
 
 
 /* Line 1792 of yacc.c  */
-#line 1450 "bison.tab.c"
+#line 1454 "Bison.tab.c"
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -1678,7 +1682,7 @@ yyreturn:
 
 
 /* Line 2055 of yacc.c  */
-#line 66 ".\\bison.y"
+#line 70 "Bison.y"
 
 
 
@@ -1687,16 +1691,9 @@ int computeSymbolIndex(char token)
 {
 	int idx = -1;
 	if(islower(token)) {
-		printf("islower");
-		printf("%d \n", token);
 		idx = token - 'a' + 26;
-		printf("%d \n", idx);
-
 	} else if(isupper(token)) {
-		printf("isupper");
-		printf("%d \n", token);
 		idx = token - 'A';
-		printf("%d \n", idx);
 	}
 	return idx;
 } 
@@ -1711,13 +1708,21 @@ int symbolVal(char symbol)
 /* updates the value of a given symbol */
 void updateSymbolVal(char symbol, int val)
 {
+	// VD a = 10
+	// bucket = vị trí mà đặt từ đó, token = a ==> idx = bucket = a - 'a' + 26
 	int bucket = computeSymbolIndex(symbol);
+	// val = value của từ đó 
+	// val = 10
 	symbols[bucket] = val;
 }
 
 int main (void) {
+	// scan fileName
+	// char fileName[];
+	// scanf ("%s", fileName);
+
 	// open a file handle to a particular file:
-	char fileName[] = "test.txt";
+	char fileName[] = "input.txt";
 	FILE *myfile = fopen(fileName, "r");
 	// make sure it's valid:
 	if (!myfile) {
@@ -1727,6 +1732,7 @@ int main (void) {
 	// Set flex to read from it instead of defaulting to STDIN:
 	yyin = myfile;
 
+	// create symbols
 	int i;
 	for(i=0; i<52; i++) {
 		symbols[i] = 0;
