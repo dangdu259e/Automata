@@ -1379,7 +1379,7 @@ yyreduce:
   case 4:
 /* Line 1792 of yacc.c  */
 #line 48 "Bison.y"
-    {printf("Printing %d\n", (yyvsp[(2) - (3)].num));}
+    {printf("Result is %d\n", (yyvsp[(2) - (3)].num));}
     break;
 
   case 5:
@@ -1391,7 +1391,7 @@ yyreduce:
   case 6:
 /* Line 1792 of yacc.c  */
 #line 50 "Bison.y"
-    {printf("Printing %d\n", (yyvsp[(3) - (4)].num));}
+    {printf("Result is %d\n", (yyvsp[(3) - (4)].num));}
     break;
 
   case 7:

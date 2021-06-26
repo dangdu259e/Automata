@@ -45,23 +45,23 @@ extern FILE *yyin;	// repair input to file
 
 line    : assignment '\n'			{;} 							// Không làm bất cứ điều gì khi nhận được dấu ;
 		| exit_command '\n'			{exit(EXIT_SUCCESS);} 			// Exit khỏi ctrình
-		| print exp '\n'			{printf("Printing %d\n", $2);} 	// in biểu thức
+		| print exp '\n'			{printf("Result is %d\n", $2);} // in biểu thức
 		| line assignment '\n'		{;} 							// dòng
-		| line print exp '\n'		{printf("Printing %d\n", $3);} 	// in ra dòng biểu thức
+		| line print exp '\n'		{printf("Result is %d\n", $3);} // in ra dòng biểu thức
 		| line exit_command '\n'	{exit(EXIT_SUCCESS);} 			// dòng kết thúc
         ;
 
 // read variable assignment line
-assignment 	: identifier '=' exp  { updateSymbolVal($1,$3); }
-			;
+assignment  : identifier '=' exp  { updateSymbolVal($1,$3); }
+		   	;
 
 // read expression line 
 exp    	: term                  {$$ = $1;}
-       	| exp '+' term          {$$ = $1 + $3;}
-       	| exp '-' term          {$$ = $1 - $3;}
+		| exp '+' term        	{$$ = $1 + $3;}
+       	| exp '-' term        	{$$ = $1 - $3;}
 		| exp '*' term			{$$ = $1 * $3;}
 		| exp '/' term			{$$ = $1 / $3;}
-       	;
+		;
 
 term   	: number                {$$ = $1;}
 		| identifier			{$$ = symbolVal($1);} 
