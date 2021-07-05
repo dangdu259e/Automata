@@ -1386,7 +1386,7 @@ yyreduce:
   case 5:
 /* Line 1792 of yacc.c  */
 #line 55 "bison.y"
-    {;}
+    {printf("%d \n", (yyval.string));}
     break;
 
   case 6:
@@ -1398,31 +1398,31 @@ yyreduce:
   case 7:
 /* Line 1792 of yacc.c  */
 #line 59 "bison.y"
-    {(yyval.value) = (yyvsp[(1) - (3)].value) + (yyvsp[(3) - (3)].value); printf("%d \n", (yyval.value));}
+    {(yyval.value) = (yyvsp[(1) - (3)].value) + (yyvsp[(3) - (3)].value); }
     break;
 
   case 8:
 /* Line 1792 of yacc.c  */
 #line 60 "bison.y"
-    {(yyval.value) = (yyvsp[(1) - (3)].value) - (yyvsp[(3) - (3)].value); printf("%d \n", (yyval.value));}
+    {(yyval.value) = (yyvsp[(1) - (3)].value) - (yyvsp[(3) - (3)].value); }
     break;
 
   case 9:
 /* Line 1792 of yacc.c  */
 #line 61 "bison.y"
-    {(yyval.value) = (yyvsp[(1) - (3)].value) * (yyvsp[(3) - (3)].value); printf("%d \n", (yyval.value));}
+    {(yyval.value) = (yyvsp[(1) - (3)].value) * (yyvsp[(3) - (3)].value); }
     break;
 
   case 10:
 /* Line 1792 of yacc.c  */
 #line 62 "bison.y"
-    {(yyval.value) = (yyvsp[(1) - (3)].value) / (yyvsp[(3) - (3)].value); printf("%d \n", (yyval.value));}
+    {(yyval.value) = (yyvsp[(1) - (3)].value) / (yyvsp[(3) - (3)].value); }
     break;
 
   case 11:
 /* Line 1792 of yacc.c  */
 #line 63 "bison.y"
-    {(yyval.value) = (yyvsp[(1) - (3)].value) % (yyvsp[(3) - (3)].value); printf("%d \n", (yyval.value));}
+    {(yyval.value) = (yyvsp[(1) - (3)].value) % (yyvsp[(3) - (3)].value); }
     break;
 
   case 12:
@@ -1434,7 +1434,7 @@ yyreduce:
   case 13:
 /* Line 1792 of yacc.c  */
 #line 67 "bison.y"
-    {(yyval.value) = symbolVal((yyvsp[(1) - (1)].symbol)); printf("term doc %d %d \n",(yyvsp[(1) - (1)].symbol), (yyval.value));}
+    {(yyval.value) = symbolVal((yyvsp[(1) - (1)].symbol)); }
     break;
 
 

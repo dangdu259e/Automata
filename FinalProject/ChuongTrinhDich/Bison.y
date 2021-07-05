@@ -52,19 +52,19 @@ line    		: assignment END line	{;}
         		;
 
 assignment     	: SYM EQN NUM		{updateSymbolVal($1,$3);}
-				| exp				{;}
+				| exp				{printf("%d \n", $$);}
         		;
 
 exp     		: term 		   		{$$ = $1; }
-				| exp ADD term 		{$$ = $1 + $3; printf("%d \n", $$);}
-        		| exp SUB term 		{$$ = $1 - $3; printf("%d \n", $$);}
-				| exp MUL term		{$$ = $1 * $3; printf("%d \n", $$);}
-				| exp DIV term 		{$$ = $1 / $3; printf("%d \n", $$);}
-				| exp MOD term		{$$ = $1 % $3; printf("%d \n", $$);}
+				| exp ADD term 		{$$ = $1 + $3; }
+        		| exp SUB term 		{$$ = $1 - $3; }
+				| exp MUL term		{$$ = $1 * $3; }
+				| exp DIV term 		{$$ = $1 / $3; }
+				| exp MOD term		{$$ = $1 % $3; }
         		;
      
 term		    : NUM   {$$ = $1; }
-				| SYM	{$$ = symbolVal($1); printf("term doc %d %d \n",$1, $$);}
+				| SYM	{$$ = symbolVal($1); }
 				;
 
 %%
