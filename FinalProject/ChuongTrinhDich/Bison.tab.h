@@ -63,7 +63,7 @@ extern int yydebug;
 typedef union YYSTYPE
 {
 /* Line 2058 of yacc.c  */
-#line 21 "bison.y"
+#line 21 "Bison.y"
 
     int value;
     char symbol;
@@ -71,7 +71,7 @@ typedef union YYSTYPE
 
 
 /* Line 2058 of yacc.c  */
-#line 75 "bison.tab.h"
+#line 75 "Bison.tab.h"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */

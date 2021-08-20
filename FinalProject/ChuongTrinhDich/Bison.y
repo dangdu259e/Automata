@@ -102,6 +102,7 @@ void updateSymbolVal(char symbol, int val)
 
 
 int main (void) {
+	// // input fileName by  
 	// scan fileName
 	// char fileName[];
 	// scanf ("%s", fileName);
@@ -115,6 +116,7 @@ int main (void) {
 		printf("I can't open file %d \n", fileName);
 		return -1;
 	}
+
 	// Set flex to read from it instead of defaulting to STDIN:
 	yyin = myfile;
 

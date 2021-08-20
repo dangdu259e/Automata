@@ -1,4 +1,4 @@
-win_bison -d bison.y
+win_bison -d Bison.y
 win_flex flex.l
 gcc bison.tab.c lex.yy.c -o bison
-bison.exe
+.\bison.exe

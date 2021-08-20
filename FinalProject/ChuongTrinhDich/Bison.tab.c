@@ -63,7 +63,7 @@
 
 /* Copy the first part of user declarations.  */
 /* Line 371 of yacc.c  */
-#line 1 "bison.y"
+#line 1 "Bison.y"
 
 // library C use in code 
 #include <stdio.h>
@@ -84,7 +84,7 @@ int yylex(); // the lexical analyzer function ==> nhận mã thông báo từ lu
 
 
 /* Line 371 of yacc.c  */
-#line 88 "bison.tab.c"
+#line 88 "Bison.tab.c"
 
 # ifndef YY_NULL
 #  if defined __cplusplus && 201103L <= __cplusplus
@@ -103,7 +103,7 @@ int yylex(); // the lexical analyzer function ==> nhận mã thông báo từ lu
 #endif
 
 /* In a future release of Bison, this section will be replaced
-   by #include "bison.tab.h".  */
+   by #include "Bison.tab.h".  */
 #ifndef YY_YY_BISON_TAB_H_INCLUDED
 # define YY_YY_BISON_TAB_H_INCLUDED
 /* Enabling traces.  */
@@ -137,7 +137,7 @@ extern int yydebug;
 typedef union YYSTYPE
 {
 /* Line 387 of yacc.c  */
-#line 21 "bison.y"
+#line 21 "Bison.y"
 
     int value;
     char symbol;
@@ -145,7 +145,7 @@ typedef union YYSTYPE
 
 
 /* Line 387 of yacc.c  */
-#line 149 "bison.tab.c"
+#line 149 "Bison.tab.c"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
@@ -173,7 +173,7 @@ int yyparse ();
 /* Copy the second part of user declarations.  */
 
 /* Line 390 of yacc.c  */
-#line 177 "bison.tab.c"
+#line 177 "Bison.tab.c"
 
 #ifdef short
 # undef short
@@ -1367,79 +1367,79 @@ yyreduce:
     {
         case 2:
 /* Line 1792 of yacc.c  */
-#line 50 "bison.y"
+#line 50 "Bison.y"
     {;}
     break;
 
   case 3:
 /* Line 1792 of yacc.c  */
-#line 51 "bison.y"
+#line 51 "Bison.y"
     {;}
     break;
 
   case 4:
 /* Line 1792 of yacc.c  */
-#line 54 "bison.y"
+#line 54 "Bison.y"
     {updateSymbolVal((yyvsp[(1) - (3)].symbol),(yyvsp[(3) - (3)].value));}
     break;
 
   case 5:
 /* Line 1792 of yacc.c  */
-#line 55 "bison.y"
+#line 55 "Bison.y"
     {printf("%d \n", (yyval.string));}
     break;
 
   case 6:
 /* Line 1792 of yacc.c  */
-#line 58 "bison.y"
+#line 58 "Bison.y"
     {(yyval.value) = (yyvsp[(1) - (1)].value); }
     break;
 
   case 7:
 /* Line 1792 of yacc.c  */
-#line 59 "bison.y"
+#line 59 "Bison.y"
     {(yyval.value) = (yyvsp[(1) - (3)].value) + (yyvsp[(3) - (3)].value); }
     break;
 
   case 8:
 /* Line 1792 of yacc.c  */
-#line 60 "bison.y"
+#line 60 "Bison.y"
     {(yyval.value) = (yyvsp[(1) - (3)].value) - (yyvsp[(3) - (3)].value); }
     break;
 
   case 9:
 /* Line 1792 of yacc.c  */
-#line 61 "bison.y"
+#line 61 "Bison.y"
     {(yyval.value) = (yyvsp[(1) - (3)].value) * (yyvsp[(3) - (3)].value); }
     break;
 
   case 10:
 /* Line 1792 of yacc.c  */
-#line 62 "bison.y"
+#line 62 "Bison.y"
     {(yyval.value) = (yyvsp[(1) - (3)].value) / (yyvsp[(3) - (3)].value); }
     break;
 
   case 11:
 /* Line 1792 of yacc.c  */
-#line 63 "bison.y"
+#line 63 "Bison.y"
     {(yyval.value) = (yyvsp[(1) - (3)].value) % (yyvsp[(3) - (3)].value); }
     break;
 
   case 12:
 /* Line 1792 of yacc.c  */
-#line 66 "bison.y"
+#line 66 "Bison.y"
     {(yyval.value) = (yyvsp[(1) - (1)].value); }
     break;
 
   case 13:
 /* Line 1792 of yacc.c  */
-#line 67 "bison.y"
+#line 67 "Bison.y"
     {(yyval.value) = symbolVal((yyvsp[(1) - (1)].symbol)); }
     break;
 
 
 /* Line 1792 of yacc.c  */
-#line 1443 "bison.tab.c"
+#line 1443 "Bison.tab.c"
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -1671,7 +1671,7 @@ yyreturn:
 
 
 /* Line 2055 of yacc.c  */
-#line 70 "bison.y"
+#line 70 "Bison.y"
 
 
 
@@ -1707,6 +1707,7 @@ void updateSymbolVal(char symbol, int val)
 
 
 int main (void) {
+	// // input fileName by  
 	// scan fileName
 	// char fileName[];
 	// scanf ("%s", fileName);
@@ -1720,6 +1721,7 @@ int main (void) {
 		printf("I can't open file %d \n", fileName);
 		return -1;
 	}
+
 	// Set flex to read from it instead of defaulting to STDIN:
 	yyin = myfile;
 

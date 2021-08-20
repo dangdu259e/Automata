@@ -1,4 +1,5 @@
 /*** C library use and declare variable ***/
+/***http://tailieudientu.lrc.tnu.edu.vn/Upload/Collection/brief/brief_8298_14281_PVT00005.pdf ***/
 %{
 #include "bison.tab.h"
 void yyerror (char *s);

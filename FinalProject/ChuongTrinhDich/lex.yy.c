@@ -446,13 +446,14 @@ int yy_flex_debug = 0;
 char *yytext;
 #line 1 "flex.l"
 /*** C library use and declare variable ***/
-#line 3 "flex.l"
+/***http://tailieudientu.lrc.tnu.edu.vn/Upload/Collection/brief/brief_8298_14281_PVT00005.pdf ***/
+#line 4 "flex.l"
 #include "bison.tab.h"
 void yyerror (char *s);
 int yylex();
-#line 453 "lex.yy.c"
+#line 454 "lex.yy.c"
 /*** the actual token (flex) or grammar (bison definition) ***/
-#line 455 "lex.yy.c"
+#line 456 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -669,9 +670,9 @@ YY_DECL
 		}
 
 	{
-#line 9 "flex.l"
+#line 10 "flex.l"
 
-#line 674 "lex.yy.c"
+#line 675 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -730,66 +731,66 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 10 "flex.l"
+#line 11 "flex.l"
 {yylval.symbol = yytext[0]; return SYM;}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 11 "flex.l"
+#line 12 "flex.l"
 {yylval.value = atoi(yytext); return NUM;}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 12 "flex.l"
+#line 13 "flex.l"
 ;
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 13 "flex.l"
+#line 14 "flex.l"
 {yylval.symbol = yytext[0]; return EQN;}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 14 "flex.l"
+#line 15 "flex.l"
 {yylval.symbol = yytext[0]; return ADD;}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 15 "flex.l"
+#line 16 "flex.l"
 {yylval.symbol = yytext[0]; return SUB;}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 16 "flex.l"
+#line 17 "flex.l"
 {yylval.symbol = yytext[0]; return MUL;}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 17 "flex.l"
+#line 18 "flex.l"
 {yylval.symbol = yytext[0]; return DIV;}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 18 "flex.l"
+#line 19 "flex.l"
 {yylval.symbol = yytext[0]; return MOD;}
 	YY_BREAK
 case 10:
 /* rule 10 can match eol */
 YY_RULE_SETUP
-#line 19 "flex.l"
+#line 20 "flex.l"
 {yylval.symbol = yytext[0]; return END;}
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 20 "flex.l"
+#line 21 "flex.l"
 {ECHO; yyerror ("unexpected character");}
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 21 "flex.l"
+#line 22 "flex.l"
 ECHO;
 	YY_BREAK
-#line 792 "lex.yy.c"
+#line 793 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1794,7 +1795,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 21 "flex.l"
+#line 22 "flex.l"
 
 
 /*** Xử lý kết thúc tệp ***/ 
