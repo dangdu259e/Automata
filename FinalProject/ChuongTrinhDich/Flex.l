@@ -10,7 +10,6 @@ int yylex();
 %%
 [a-zA-Z]    {yylval.symbol = yytext[0]; return SYM;}
 [0-9]+      {yylval.value = atoi(yytext); return NUM;}
-[ \t]       ;
 [=]         {yylval.symbol = yytext[0]; return EQN;}
 [+]         {yylval.symbol = yytext[0]; return ADD;}
 [-]         {yylval.symbol = yytext[0]; return SUB;}
